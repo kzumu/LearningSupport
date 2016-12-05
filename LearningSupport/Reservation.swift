@@ -9,11 +9,11 @@
 import Foundation
 
 class Reservation {
-    var subjectName:    String! = ""
-    var day:            String! = ""
-    var hour:           String! = ""
-    var name:           String! = ""
-    var mail:           String! = ""
-    var grade:          String! = ""
+    static var subjectName:    String = ""
+    static var day:            String = ""
+    static var hour:           String = ""
+    static var name:           String = ""
+    static var mail:           String = ""
+    static var grade:          String = ""
 }
 

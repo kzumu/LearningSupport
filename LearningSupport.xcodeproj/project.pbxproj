@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202FB7F31DF70604003E7978 /* subjectInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 202FB7F21DF70604003E7978 /* subjectInfo.json */; };
 		20D31FE31DF542A100EDA955 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D31FE21DF542A100EDA955 /* AppDelegate.swift */; };
 		20D31FE51DF542A100EDA955 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D31FE41DF542A100EDA955 /* ViewController.swift */; };
 		20D31FE81DF542A100EDA955 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D31FE61DF542A100EDA955 /* Main.storyboard */; };
 		20D31FEA1DF542A100EDA955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D31FE91DF542A100EDA955 /* Assets.xcassets */; };
 		20D31FED1DF542A100EDA955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D31FEB1DF542A100EDA955 /* LaunchScreen.storyboard */; };
 		20D31FF51DF55A1500EDA955 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D31FF41DF55A1500EDA955 /* Reservation.swift */; };
-		20D31FF81DF55E4200EDA955 /* subjectInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 20D31FF71DF55E4200EDA955 /* subjectInfo.json */; };
 		20D31FFA1DF55FB700EDA955 /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D31FF91DF55FB700EDA955 /* ResourceManager.swift */; };
 		20D31FFD1DF58C2000EDA955 /* ChooseSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D31FFC1DF58C2000EDA955 /* ChooseSubjectViewController.swift */; };
 		20D31FFF1DF58C3800EDA955 /* ChooseDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D31FFE1DF58C3800EDA955 /* ChooseDateViewController.swift */; };
@@ -24,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		0927CF9D73924E0A34FEFE2B /* Pods-LearningSupport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningSupport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LearningSupport/Pods-LearningSupport.debug.xcconfig"; sourceTree = "<group>"; };
+		202FB7F21DF70604003E7978 /* subjectInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = subjectInfo.json; sourceTree = "<group>"; };
 		20D31FDF1DF542A100EDA955 /* LearningSupport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningSupport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20D31FE21DF542A100EDA955 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20D31FE41DF542A100EDA955 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -32,7 +33,6 @@
 		20D31FEC1DF542A100EDA955 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20D31FEE1DF542A100EDA955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20D31FF41DF55A1500EDA955 /* Reservation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
-		20D31FF71DF55E4200EDA955 /* subjectInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = subjectInfo.json; sourceTree = "<group>"; };
 		20D31FF91DF55FB700EDA955 /* ResourceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
 		20D31FFC1DF58C2000EDA955 /* ChooseSubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSubjectViewController.swift; sourceTree = "<group>"; };
 		20D31FFE1DF58C3800EDA955 /* ChooseDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseDateViewController.swift; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 		20D31FF61DF55E2400EDA955 /* resource */ = {
 			isa = PBXGroup;
 			children = (
-				20D31FF71DF55E4200EDA955 /* subjectInfo.json */,
+				202FB7F21DF70604003E7978 /* subjectInfo.json */,
 			);
 			name = resource;
 			sourceTree = "<group>";
@@ -188,7 +188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20D31FF81DF55E4200EDA955 /* subjectInfo.json in Resources */,
+				202FB7F31DF70604003E7978 /* subjectInfo.json in Resources */,
 				20D31FED1DF542A100EDA955 /* LaunchScreen.storyboard in Resources */,
 				20D31FEA1DF542A100EDA955 /* Assets.xcassets in Resources */,
 				20D31FE81DF542A100EDA955 /* Main.storyboard in Resources */,

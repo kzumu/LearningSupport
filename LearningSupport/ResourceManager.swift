@@ -37,3 +37,12 @@ class ResourceManager {
     }
     
 }
+
+struct SemesterName {
+    static let grade1_1 = "1年前期"
+    static let grade1_2 = "1年後期"
+    static let grade2_1 = "2年前期"
+    static let grade2_2 = "2年後期"
+    static let grade3_1 = "3年前期"
+    static let grade3_2 = "3年後期"
+}

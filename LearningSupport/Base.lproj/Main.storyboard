@@ -68,66 +68,70 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Ooj-qF-8dO" kind="relationship" relationship="rootViewController" id="jqv-Fr-lfC"/>
+                        <segue destination="cKO-HR-g9R" kind="relationship" relationship="rootViewController" id="IcT-UP-A3a"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5gu-7X-vha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="823" y="139"/>
         </scene>
-        <!--授業を選択してください-->
-        <scene sceneID="kjH-4k-sFe">
+        <!--科目を選択してください-->
+        <scene sceneID="3bB-pp-MH8">
             <objects>
-                <viewController id="Ooj-qF-8dO" customClass="ChooseSubjectViewController" customModule="LearningSupport" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1TX-7a-p4U"/>
-                        <viewControllerLayoutGuide type="bottom" id="ero-H0-XiH"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WYd-oO-gk7">
+                <tableViewController id="cKO-HR-g9R" customClass="ChooseSubjectViewController" customModule="LearningSupport" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="VZD-eN-kwb">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="McN-Mz-3eP">
-                                <rect key="frame" x="0.0" y="64" width="768" height="960"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="h2d-lX-Saf">
-                                        <rect key="frame" x="0.0" y="28" width="768" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h2d-lX-Saf" id="z9s-mN-obd">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="Ooj-qF-8dO" id="RMS-kw-f3E"/>
-                                    <outlet property="delegate" destination="Ooj-qF-8dO" id="IX7-F6-pG5"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="McN-Mz-3eP" firstAttribute="top" secondItem="1TX-7a-p4U" secondAttribute="bottom" id="Drq-Xd-z18"/>
-                            <constraint firstItem="McN-Mz-3eP" firstAttribute="leading" secondItem="WYd-oO-gk7" secondAttribute="leading" id="guc-T8-tJa"/>
-                            <constraint firstItem="ero-H0-XiH" firstAttribute="top" secondItem="McN-Mz-3eP" secondAttribute="bottom" id="l6Z-Hd-2EU"/>
-                            <constraint firstAttribute="trailing" secondItem="McN-Mz-3eP" secondAttribute="trailing" id="yyk-ju-fWF"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="授業を選択してください" id="4XZ-R5-HjT">
-                        <barButtonItem key="leftBarButtonItem" title="キャンセル" id="Fwf-Rs-Q9v">
-                            <connections>
-                                <action selector="cancelButtonTapped:" destination="Ooj-qF-8dO" id="PZx-AE-AgL"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ParentCell" textLabel="7En-Qi-yRU" style="IBUITableViewCellStyleDefault" id="gqn-ds-DRN">
+                                <rect key="frame" x="0.0" y="28" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gqn-ds-DRN" id="vA9-RM-bai">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7En-Qi-yRU">
+                                            <rect key="frame" x="48" y="0.0" width="672" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChildCell" textLabel="NgG-fw-sNW" style="IBUITableViewCellStyleDefault" id="ZXf-Be-jjt">
+                                <rect key="frame" x="0.0" y="72" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZXf-Be-jjt" id="Hq0-tM-Hg2">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NgG-fw-sNW">
+                                            <rect key="frame" x="48" y="0.0" width="672" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cKO-HR-g9R" id="xoe-2q-VdG"/>
+                            <outlet property="delegate" destination="cKO-HR-g9R" id="Y1a-qo-cTL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="科目を選択してください" id="eBb-yr-rYP"/>
                     <connections>
-                        <segue destination="IFE-OI-QIs" kind="show" identifier="toChooseDate" id="f5V-dR-cIt"/>
+                        <segue destination="IFE-OI-QIs" kind="show" id="bry-cc-K0c"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XoT-TS-LKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eZ7-fA-kQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1945" y="128"/>
+            <point key="canvasLocation" x="2155" y="128"/>
         </scene>
         <!--希望日時を選択してください-->
         <scene sceneID="AlO-C7-DT0">

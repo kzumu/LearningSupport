@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AccordionMenuSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JAYSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>60BB8720935026DC9363C02D4BD220EE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8E8C4A2128F818A24C8DDB2D30192F57</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>930FB252F9E93D0E976E006160871613</key>
+		<key>E94E22543D11F452567CCB1EE95A370E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -8,5 +8,7 @@ target 'LearningSupport' do
   # Pods for LearningSupport
 	
 	pod "JAYSON"
+	pod 'AccordionMenuSwift'
+
 
 end

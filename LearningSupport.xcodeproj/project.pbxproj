@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		202FB7F31DF70604003E7978 /* subjectInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 202FB7F21DF70604003E7978 /* subjectInfo.json */; };
+		2048F54C1DFE91F8009F94F5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2048F54B1DFE91F8009F94F5 /* MessageUI.framework */; };
 		20D31FE31DF542A100EDA955 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D31FE21DF542A100EDA955 /* AppDelegate.swift */; };
 		20D31FE51DF542A100EDA955 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D31FE41DF542A100EDA955 /* ViewController.swift */; };
 		20D31FE81DF542A100EDA955 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D31FE61DF542A100EDA955 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		0927CF9D73924E0A34FEFE2B /* Pods-LearningSupport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningSupport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LearningSupport/Pods-LearningSupport.debug.xcconfig"; sourceTree = "<group>"; };
 		202FB7F21DF70604003E7978 /* subjectInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = subjectInfo.json; sourceTree = "<group>"; };
+		2048F54B1DFE91F8009F94F5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		20D31FDF1DF542A100EDA955 /* LearningSupport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningSupport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20D31FE21DF542A100EDA955 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20D31FE41DF542A100EDA955 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2048F54C1DFE91F8009F94F5 /* MessageUI.framework in Frameworks */,
 				58D75117A3E4DBA213D1ABB4 /* Pods_LearningSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,6 +114,7 @@
 		62C6A8922DD1C71899AA24B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2048F54B1DFE91F8009F94F5 /* MessageUI.framework */,
 				30EFC8362117BF43DB7C14A3 /* Pods_LearningSupport.framework */,
 			);
 			name = Frameworks;

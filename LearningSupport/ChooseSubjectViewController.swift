@@ -7,13 +7,21 @@
 //
 
 import UIKit
-import AccordionMenuSwift
 
-class ChooseSubjectViewController: AccordionTableViewController {
+class ChooseSubjectViewController: UITableViewController {
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.description)
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        super.tableView(tableView, didSelectRowAt: indexPath)
+//        print(indexPath.description)
+//    }
+    
+    var childs1_1:[String] = []
+    var childs1_2:[String] = []
+    var childs2_1:[String] = []
+    var childs2_2:[String] = []
+    var childs3_1:[String] = []
+    var childs3_2:[String] = []
+    var childsOthers: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,18 +38,116 @@ class ChooseSubjectViewController: AccordionTableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 7
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        switch indexPath.section {
+        case 0 :
+            cell.textLabel?.text = childs1_1[indexPath.row]
+        case 1 :
+            cell.textLabel?.text = childs1_2[indexPath.row]
+        case 2 :
+            cell.textLabel?.text = childs2_1[indexPath.row]
+        case 3 :
+            cell.textLabel?.text = childs2_2[indexPath.row]
+        case 4 :
+            cell.textLabel?.text = childs3_1[indexPath.row]
+        case 5 :
+            cell.textLabel?.text = childs3_2[indexPath.row]
+        case 6:
+            cell.textLabel?.text = childsOthers[indexPath.row]
+        default: break
+            
+        }
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0 :
+            Reservation.subjectName = childs1_1[indexPath.row]
+        case 1 :
+            Reservation.subjectName = childs1_2[indexPath.row]
+        case 2 :
+            Reservation.subjectName = childs2_1[indexPath.row]
+        case 3 :
+            Reservation.subjectName = childs2_2[indexPath.row]
+        case 4 :
+            Reservation.subjectName = childs3_1[indexPath.row]
+        case 5 :
+            Reservation.subjectName = childs3_2[indexPath.row]
+        case 6:
+            Reservation.subjectName = childsOthers[indexPath.row]
+        default:
+            break
+        }
+        
+        print(Reservation.subjectName)
+        
+        
+        performSegue(withIdentifier: "toPickDate", sender: self)
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        var name = ""
+        switch section {
+        case 0:
+            name = SemesterName.grade1_1
+        case 1:
+            name = SemesterName.grade1_2
+        case 2:
+            name = SemesterName.grade2_1
+        case 3:
+            name = SemesterName.grade2_2
+        case 4:
+            name = SemesterName.grade3_1
+        case 5:
+            name = SemesterName.grade3_2
+        case 6:
+            name = "その他"
+        default:
+            break
+        }
+        
+        return name
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        var count = 0
+        
+        switch section {
+        case 0 :
+            count = childs1_1.count
+        case 1 :
+            count = childs1_2.count
+        case 2 :
+            count = childs2_1.count
+        case 3 :
+            count = childs2_2.count
+        case 4 :
+            count = childs3_1.count
+        case 5 :
+            count = childs3_2.count
+        case 6:
+            count = childsOthers.count
+        default:
+            count = 0
+        }
+        return count
+    }
+    
+    
     func setup() {
         
-        var childs1_1:[String] = []
-        var childs1_2:[String] = []
-        var childs2_1:[String] = []
-        var childs2_2:[String] = []
-        var childs3_1:[String] = []
-        var childs3_2:[String] = []
-        var childsOthers: [String] = []
-        
         for subject in ResourceManager.subjects {
-        
+            
             switch (subject.grade, subject.semester) {
             case (1,1):
                 childs1_1.append(subject.subjectName)
@@ -60,16 +166,16 @@ class ChooseSubjectViewController: AccordionTableViewController {
             }
         }
         
-        let parent1_1 = Parent(state: .collapsed, childs: childs1_1, title: SemesterName.grade1_1)
-        let parent1_2 = Parent(state: .collapsed, childs: childs1_2, title: SemesterName.grade1_2)
-        let parent2_1 = Parent(state: .collapsed, childs: childs2_1, title: SemesterName.grade2_1)
-        let parent2_2 = Parent(state: .collapsed, childs: childs2_2, title: SemesterName.grade2_2)
-        let parent3_1 = Parent(state: .collapsed, childs: childs3_1, title: SemesterName.grade3_1)
-        let parent3_2 = Parent(state: .collapsed, childs: childs3_2, title: SemesterName.grade3_2)
-        let parentOther = Parent(state: .collapsed, childs: childsOthers, title: "その他")
-        
-        self.dataSource = [parent1_1, parent1_2, parent2_1, parent2_2, parent3_1, parent3_2, parentOther]
-        self.numberOfCellsExpanded = .several
+//        let parent1_1 = Parent(state: .collapsed, childs: childs1_1, title: SemesterName.grade1_1)
+//        let parent1_2 = Parent(state: .collapsed, childs: childs1_2, title: SemesterName.grade1_2)
+//        let parent2_1 = Parent(state: .collapsed, childs: childs2_1, title: SemesterName.grade2_1)
+//        let parent2_2 = Parent(state: .collapsed, childs: childs2_2, title: SemesterName.grade2_2)
+//        let parent3_1 = Parent(state: .collapsed, childs: childs3_1, title: SemesterName.grade3_1)
+//        let parent3_2 = Parent(state: .collapsed, childs: childs3_2, title: SemesterName.grade3_2)
+//        let parentOther = Parent(state: .collapsed, childs: childsOthers, title: "その他")
+//        
+//        self.dataSource = [parent1_1, parent1_2, parent2_1, parent2_2, parent3_1, parent3_2, parentOther]
+//        self.numberOfCellsExpanded = .several
     }
     
     

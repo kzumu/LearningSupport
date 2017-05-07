@@ -24,20 +24,22 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var otherField: UITextField!
     
     var txtActiveField: UITextField!
+    @IBOutlet weak var scrollViewer: UIScrollView!
     
-    
-    
-    
-    
+
     //編集後のtextFieldを新しく格納する変数を定義
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-subjectTitle.text = Reservation.subjectName
+        subjectTitle.text = Reservation.subjectName
         dateLabel.text = Reservation.day + Reservation.hour
-        text1.delegate = self
-        text2.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+      //  text1.delegate = self
+       // text2.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -71,7 +73,7 @@ subjectTitle.text = Reservation.subjectName
         }
         
         let mailViewController = MFMailComposeViewController()
-        let toRecipients = ["前川さん@1gmail.com"]
+        let toRecipients = ["yuko_m@ipu-office.iwate-pu.ac.jp"]
         let CcRecipients = [Reservation.mail]
         
         
@@ -132,11 +134,30 @@ subjectTitle.text = Reservation.subjectName
       
         
         
-        
-        let notificationCenter = NSNotificationCenter.defaultCenter()
+        /*
+        let notificationCenter = NotificationCenter.defaultCenter
         notificationCenter.addObserver(self, selector: "handleKeyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: "handleKeyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
+ */
     }
+    
+    func keyboardWillShow(notification:NSNotification){
+        //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = scrollViewer.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        self.scrollViewer.contentInset = contentInset
+    }
+    
+    func keyboardWillHide(notification:NSNotification){
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        self.scrollViewer.contentInset = contentInset
+    }
+    
+    /*
     // Viewが非表示になるたびに呼び出されるメソッド
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -193,6 +214,7 @@ subjectTitle.text = Reservation.subjectName
         addScroll.contentOffset.y = 0
     }
 
+ */
     /*
     // MARK: - Navigation
 

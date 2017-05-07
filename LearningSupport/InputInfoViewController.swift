@@ -37,9 +37,6 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-      //  text1.delegate = self
-       // text2.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -119,27 +116,23 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         case .saved:
             print("Email Saved as a Draft")
         case .sent:
-            print("Email Sent Successfully")
+            self.dismiss(animated: true, completion: {
+                print("Email Sent Successfully")
+                let ac = UIAlertController(title: "送信成功", message: "\(Reservation.mail)に控えを送信しました\n担当者より返信が来るまでお待ちください", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
+                    self.navigationController?.popToRootViewController(animated: true)
+                })
+                ac.addAction(okAction)
+                self.present(ac, animated: true, completion: nil)
+                return
+            })
         case .failed:
             print("Email Send Failed")
         }
         
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
-      // Viewが画面に表示される度に呼ばれるメソッド
-    override func viewWillAppear(_ animated: Bool) {
-            // NSNotificationCenterへの登録処理
-      
-        
-        
-        /*
-        let notificationCenter = NotificationCenter.defaultCenter
-        notificationCenter.addObserver(self, selector: "handleKeyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)
-        notificationCenter.addObserver(self, selector: "handleKeyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
- */
-    }
+
     
     func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
@@ -157,64 +150,6 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         self.scrollViewer.contentInset = contentInset
     }
     
-    /*
-    // Viewが非表示になるたびに呼び出されるメソッド
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-      // NSNotificationCenterの解除処理
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        notificationCenter.removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-    }
-  //画面がタップされた際にキーボードを閉じる処理
-    func tapGesture(sender: UITapGestureRecognizer) {
-        text1.resignFirstResponder()
-        text2.resignFirstResponder()
-        
-    }
-    //キーボードのreturnが押された際にキーボードを閉じる処理
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        text1.resignFirstResponder()
-        text2.resignFirstResponder()
-        //        itemMemo.resignFirstResponder()
-        return true
-    }
-    //textFieldを編集する際に行われる処理
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        txtActiveField = textField //　編集しているtextFieldを新しいtextField型の変数に代入する
-        return true
-    }
-    
-    //キーボードが表示された時
-    func handleKeyboardWillShowNotification(notification: NSNotification) {
-        //郵便入れみたいなもの
-        let userInfo = notification.userInfo!
-        //キーボードの大きさを取得
-        let keyboardRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-            // 画面のサイズを取得
-        let myBoundSize: CGSize = UIScreen.main.bounds.size
-        //　ViewControllerを基準にtextFieldの下辺までの距離を取得
-        var txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 8.0
-      // ViewControllerの高さからキーボードの高さを引いた差分を取得
-        let kbdLimit = myBoundSize.height - keyboardRect.size.height
-        
-            // こうすることで高さを確認できる（なくてもいい）
-        print("テキストフィールドの下辺：(\(txtLimit))")
-        print("キーボードの上辺：(\(kbdLimit))")
-        
-        //スクロールビューの移動距離設定
-        if txtLimit >= kbdLimit {
-            addScroll.contentOffset.y = txtLimit - kbdLimit
-        }
-    }
-    
-    //ずらした分を戻す処理
-    func handleKeyboardWillHideNotification(notification: NSNotification) {
-        addScroll.contentOffset.y = 0
-    }
-
- */
     /*
     // MARK: - Navigation
 

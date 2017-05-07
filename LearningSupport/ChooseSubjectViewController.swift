@@ -165,17 +165,6 @@ class ChooseSubjectViewController: UITableViewController {
                 childsOthers.append(subject.subjectName)
             }
         }
-        
-//        let parent1_1 = Parent(state: .collapsed, childs: childs1_1, title: SemesterName.grade1_1)
-//        let parent1_2 = Parent(state: .collapsed, childs: childs1_2, title: SemesterName.grade1_2)
-//        let parent2_1 = Parent(state: .collapsed, childs: childs2_1, title: SemesterName.grade2_1)
-//        let parent2_2 = Parent(state: .collapsed, childs: childs2_2, title: SemesterName.grade2_2)
-//        let parent3_1 = Parent(state: .collapsed, childs: childs3_1, title: SemesterName.grade3_1)
-//        let parent3_2 = Parent(state: .collapsed, childs: childs3_2, title: SemesterName.grade3_2)
-//        let parentOther = Parent(state: .collapsed, childs: childsOthers, title: "その他")
-//        
-//        self.dataSource = [parent1_1, parent1_2, parent2_1, parent2_2, parent3_1, parent3_2, parentOther]
-//        self.numberOfCellsExpanded = .several
     }
     
     

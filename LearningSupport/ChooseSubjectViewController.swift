@@ -10,11 +10,6 @@ import UIKit
 
 class ChooseSubjectViewController: UITableViewController {
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        super.tableView(tableView, didSelectRowAt: indexPath)
-//        print(indexPath.description)
-//    }
-    
     var childs1_1:[String] = []
     var childs1_2:[String] = []
     var childs2_1:[String] = []

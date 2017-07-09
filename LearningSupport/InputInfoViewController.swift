@@ -62,31 +62,7 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         Reservation.grade = grade[pickerView.selectedRow(inComponent: 0)]
         Reservation.schoolNumber = schoolNumberField.text!
         
-        
-        //メールを送信できるかチェック
-        if MFMailComposeViewController.canSendMail()==false {
-            print("Email Send Failed")
-            return
-        }
-        
-        let mailViewController = MFMailComposeViewController()
-        let toRecipients = ["yuko_m@ipu-office.iwate-pu.ac.jp"]
-        let CcRecipients = [Reservation.mail]
-        
-        
-        mailViewController.mailComposeDelegate = self
-        mailViewController.setSubject("予約申請")
-        mailViewController.setToRecipients(toRecipients) //Toアドレスの表示
-        mailViewController.setCcRecipients(CcRecipients) //Ccアドレスの表示
-        
-        let body = "<table border><tr><td>希望日</td><td>\(Reservation.day)\(Reservation.hour)</td></tr><tr><td>科目名</td><td>\(Reservation.subjectName)</td></tr><tr><td>申請者名</td><td>\(Reservation.name)</td></tr><tr><td>学年</td><td>\(Reservation.grade)</td></tr><tr><td>学籍番号</td><td>\(Reservation.schoolNumber)</td></tr><tr><td>メールアドレス</td><td>\(Reservation.mail)</td></tr><tr><td>伝達事項</td><td>\(Reservation.other)</td></tr></table>"
-        
-        //<tr><td>1-1</td><td>1-2</td></tr>
-        mailViewController.setMessageBody(body, isHTML: true)
-        
-        
-        
-        self.present(mailViewController, animated: true, completion: nil)
+        makeMail()
     }
     
     @IBAction func overLayTapped(_ sender: Any) {
@@ -95,7 +71,6 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         mailAddressField.resignFirstResponder()
         otherField.resignFirstResponder()
     }
-    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -118,7 +93,9 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         case .sent:
             self.dismiss(animated: true, completion: {
                 print("Email Sent Successfully")
-                let ac = UIAlertController(title: "送信成功", message: "\(Reservation.mail)に控えを送信しました\n担当者より返信が来るまでお待ちください", preferredStyle: .alert)
+                let ac = UIAlertController(title: "\(Reservation.mail)に控えを送信します。",
+                                           message: "メールが正常に送信されないバグが発生しているようです。\nお手数をおかけしますがホームボタンをダブルタップして送信ボックスをチェックの上、未送信の場合は未送信リストを下にスワイプして再送信して見てください。",
+                                           preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
                     self.navigationController?.popToRootViewController(animated: true)
                 })
@@ -148,6 +125,55 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     func keyboardWillHide(notification:NSNotification){
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         self.scrollViewer.contentInset = contentInset
+    }
+    
+    func stringForCcToArray(str: String) -> [String] {
+        var array:[String] = []
+        
+        let commaSp = Reservation.mail.components(separatedBy: ", ")
+        let comma = Reservation.mail.components(separatedBy: ",")
+        let space = Reservation.mail.components(separatedBy: " ")
+        
+        for item in [commaSp, comma, space] {
+            if array.count < item.count {
+                array = item
+            }
+        }
+        
+        return array
+    }
+    
+    func makeMail() {
+        //メールを送信できるかチェック
+        if MFMailComposeViewController.canSendMail()==false {
+            
+            let alert = UIAlertController(title: "エラー", message: "原因不明のエラーです\n管理者にご連絡ください", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            
+            print("Email Send Failed")
+            return
+        }
+        
+        let mailViewController = MFMailComposeViewController()
+        let toRecipients = [Email.to]
+        //        let toRecipients = [Email.stubTo]
+        
+        let CcRecipients:[String] = self.stringForCcToArray(str: Reservation.mail)
+        
+        mailViewController.mailComposeDelegate = self
+        mailViewController.setSubject("予約申請")
+        mailViewController.setToRecipients(toRecipients) //Toアドレスの表示
+        mailViewController.setCcRecipients(CcRecipients) //Ccアドレスの表示
+        
+        let body = "<table border><tr><td>希望日</td><td>\(Reservation.day)\(Reservation.hour)</td></tr><tr><td>科目名</td><td>\(Reservation.subjectName)</td></tr><tr><td>申請者名</td><td>\(Reservation.name)</td></tr><tr><td>学年</td><td>\(Reservation.grade)</td></tr><tr><td>学籍番号</td><td>\(Reservation.schoolNumber)</td></tr><tr><td>メールアドレス</td><td>\(Reservation.mail)</td></tr><tr><td>伝達事項</td><td>\(Reservation.other)</td></tr></table>"
+        
+        //<tr><td>1-1</td><td>1-2</td></tr>
+        mailViewController.setMessageBody(body, isHTML: true)
+        
+        
+        
+        self.present(mailViewController, animated: true, completion: nil)
     }
     
     /*

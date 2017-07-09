@@ -21,6 +21,7 @@
 		20D320011DF58C7D00EDA955 /* InputInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D320001DF58C7D00EDA955 /* InputInfoViewController.swift */; };
 		20D320031DF593DE00EDA955 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D320021DF593DE00EDA955 /* Subject.swift */; };
 		58D75117A3E4DBA213D1ABB4 /* Pods_LearningSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30EFC8362117BF43DB7C14A3 /* Pods_LearningSupport.framework */; };
+		6E8CDF851F12130100D8822B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CDF841F12130100D8822B /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		20D320021DF593DE00EDA955 /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		30EFC8362117BF43DB7C14A3 /* Pods_LearningSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LearningSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A639C9D479E64C2E640D274 /* Pods-LearningSupport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningSupport.release.xcconfig"; path = "Pods/Target Support Files/Pods-LearningSupport/Pods-LearningSupport.release.xcconfig"; sourceTree = "<group>"; };
+		6E8CDF841F12130100D8822B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				20D31FFC1DF58C2000EDA955 /* ChooseSubjectViewController.swift */,
 				20D31FFE1DF58C3800EDA955 /* ChooseDateViewController.swift */,
 				20D320001DF58C7D00EDA955 /* InputInfoViewController.swift */,
+				6E8CDF841F12130100D8822B /* Constants.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				20D320011DF58C7D00EDA955 /* InputInfoViewController.swift in Sources */,
 				20D31FF51DF55A1500EDA955 /* Reservation.swift in Sources */,
 				20D31FFA1DF55FB700EDA955 /* ResourceManager.swift in Sources */,
+				6E8CDF851F12130100D8822B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

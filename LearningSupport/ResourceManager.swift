@@ -18,7 +18,7 @@ class ResourceManager {
         let fileHandle : FileHandle = FileHandle(forReadingAtPath: path)!
         let data  = fileHandle.readDataToEndOfFile()
         
-        let json = try! JAYSON(data: data)
+        let json = try! JSON(data: data)
         
         for i in 0..<json.array!.count {
             let subjectName = json[i]["subjectName"].string!

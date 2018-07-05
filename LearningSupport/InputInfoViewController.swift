@@ -93,8 +93,8 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         case .sent:
             self.dismiss(animated: true, completion: {
                 print("Email Sent Successfully")
-                let ac = UIAlertController(title: "\(Reservation.mail)に控えを送信します。",
-                                           message: "メールが正常に送信されないバグが発生しているようです。\nお手数をおかけしますがホームボタンをダブルタップして送信ボックスをチェックの上、未送信の場合は未送信リストを下にスワイプして再送信して見てください。",
+                let ac = UIAlertController(title: "\(Reservation.mail)に控えを送信しました。",
+                                           message: "正しく控えのメールが届いているかご確認ください。",
                                            preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
                     self.navigationController?.popToRootViewController(animated: true)
@@ -147,7 +147,7 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         //メールを送信できるかチェック
         if MFMailComposeViewController.canSendMail()==false {
             
-            let alert = UIAlertController(title: "エラー", message: "原因不明のエラーです\n管理者にご連絡ください", preferredStyle: .alert)
+            let alert = UIAlertController(title: "エラー", message: "メールが送信できる状態にありません\n管理者にご連絡ください", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             

@@ -17,10 +17,12 @@
 		20D31FF51DF55A1500EDA955 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D31FF41DF55A1500EDA955 /* Reservation.swift */; };
 		20D31FFA1DF55FB700EDA955 /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D31FF91DF55FB700EDA955 /* ResourceManager.swift */; };
 		20D31FFD1DF58C2000EDA955 /* ChooseSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D31FFC1DF58C2000EDA955 /* ChooseSubjectViewController.swift */; };
-		20D31FFF1DF58C3800EDA955 /* ChooseDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D31FFE1DF58C3800EDA955 /* ChooseDateViewController.swift */; };
 		20D320011DF58C7D00EDA955 /* InputInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D320001DF58C7D00EDA955 /* InputInfoViewController.swift */; };
 		20D320031DF593DE00EDA955 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D320021DF593DE00EDA955 /* Subject.swift */; };
 		58D75117A3E4DBA213D1ABB4 /* Pods_LearningSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30EFC8362117BF43DB7C14A3 /* Pods_LearningSupport.framework */; };
+		AC9B9CD020EE3C8600111F68 /* MyDateTimePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9B9CCF20EE3C8600111F68 /* MyDateTimePickerView.xib */; };
+		AC9B9CD220EE3F0600111F68 /* ChooseDateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9B9CD120EE3F0600111F68 /* ChooseDateTableViewController.swift */; };
+		AC9B9CD420EE3FF200111F68 /* MyDateTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9B9CD320EE3FF200111F68 /* MyDateTimePickerView.swift */; };
 		ACA876AE20EE107C00025CE5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA876AD20EE107C00025CE5 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,11 +40,13 @@
 		20D31FF41DF55A1500EDA955 /* Reservation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
 		20D31FF91DF55FB700EDA955 /* ResourceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
 		20D31FFC1DF58C2000EDA955 /* ChooseSubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSubjectViewController.swift; sourceTree = "<group>"; };
-		20D31FFE1DF58C3800EDA955 /* ChooseDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseDateViewController.swift; sourceTree = "<group>"; };
 		20D320001DF58C7D00EDA955 /* InputInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputInfoViewController.swift; sourceTree = "<group>"; };
 		20D320021DF593DE00EDA955 /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		30EFC8362117BF43DB7C14A3 /* Pods_LearningSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LearningSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A639C9D479E64C2E640D274 /* Pods-LearningSupport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningSupport.release.xcconfig"; path = "Pods/Target Support Files/Pods-LearningSupport/Pods-LearningSupport.release.xcconfig"; sourceTree = "<group>"; };
+		AC9B9CCF20EE3C8600111F68 /* MyDateTimePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyDateTimePickerView.xib; sourceTree = "<group>"; };
+		AC9B9CD120EE3F0600111F68 /* ChooseDateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDateTableViewController.swift; sourceTree = "<group>"; };
+		AC9B9CD320EE3FF200111F68 /* MyDateTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDateTimePickerView.swift; sourceTree = "<group>"; };
 		ACA876AD20EE107C00025CE5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,16 +84,15 @@
 		20D31FE11DF542A100EDA955 /* LearningSupport */ = {
 			isa = PBXGroup;
 			children = (
+				AC9B9CDC20EE7A1000111F68 /* Repository */,
+				AC9B9CDB20EE78E400111F68 /* Views */,
 				20D31FFB1DF58BF200EDA955 /* ViewControllers */,
 				20D31FF61DF55E2400EDA955 /* resource */,
 				20D31FE21DF542A100EDA955 /* AppDelegate.swift */,
+				20D31FEB1DF542A100EDA955 /* LaunchScreen.storyboard */,
 				20D31FE61DF542A100EDA955 /* Main.storyboard */,
 				20D31FE91DF542A100EDA955 /* Assets.xcassets */,
-				20D31FEB1DF542A100EDA955 /* LaunchScreen.storyboard */,
 				20D31FEE1DF542A100EDA955 /* Info.plist */,
-				20D31FF41DF55A1500EDA955 /* Reservation.swift */,
-				20D31FF91DF55FB700EDA955 /* ResourceManager.swift */,
-				20D320021DF593DE00EDA955 /* Subject.swift */,
 			);
 			path = LearningSupport;
 			sourceTree = "<group>";
@@ -107,9 +110,8 @@
 			children = (
 				20D31FE41DF542A100EDA955 /* ViewController.swift */,
 				20D31FFC1DF58C2000EDA955 /* ChooseSubjectViewController.swift */,
-				20D31FFE1DF58C3800EDA955 /* ChooseDateViewController.swift */,
+				AC9B9CD120EE3F0600111F68 /* ChooseDateTableViewController.swift */,
 				20D320001DF58C7D00EDA955 /* InputInfoViewController.swift */,
-				ACA876AD20EE107C00025CE5 /* Constants.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -130,6 +132,26 @@
 				3A639C9D479E64C2E640D274 /* Pods-LearningSupport.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		AC9B9CDB20EE78E400111F68 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AC9B9CCF20EE3C8600111F68 /* MyDateTimePickerView.xib */,
+				AC9B9CD320EE3FF200111F68 /* MyDateTimePickerView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		AC9B9CDC20EE7A1000111F68 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				ACA876AD20EE107C00025CE5 /* Constants.swift */,
+				20D320021DF593DE00EDA955 /* Subject.swift */,
+				20D31FF41DF55A1500EDA955 /* Reservation.swift */,
+				20D31FF91DF55FB700EDA955 /* ResourceManager.swift */,
+			);
+			name = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC9B9CD020EE3C8600111F68 /* MyDateTimePickerView.xib in Resources */,
 				202FB7F31DF70604003E7978 /* subjectInfo.json in Resources */,
 				20D31FED1DF542A100EDA955 /* LaunchScreen.storyboard in Resources */,
 				20D31FEA1DF542A100EDA955 /* Assets.xcassets in Resources */,
@@ -267,10 +290,11 @@
 			files = (
 				20D320031DF593DE00EDA955 /* Subject.swift in Sources */,
 				20D31FE51DF542A100EDA955 /* ViewController.swift in Sources */,
-				20D31FFF1DF58C3800EDA955 /* ChooseDateViewController.swift in Sources */,
 				20D31FFD1DF58C2000EDA955 /* ChooseSubjectViewController.swift in Sources */,
 				20D31FE31DF542A100EDA955 /* AppDelegate.swift in Sources */,
 				20D320011DF58C7D00EDA955 /* InputInfoViewController.swift in Sources */,
+				AC9B9CD220EE3F0600111F68 /* ChooseDateTableViewController.swift in Sources */,
+				AC9B9CD420EE3FF200111F68 /* MyDateTimePickerView.swift in Sources */,
 				20D31FF51DF55A1500EDA955 /* Reservation.swift in Sources */,
 				20D31FFA1DF55FB700EDA955 /* ResourceManager.swift in Sources */,
 				ACA876AE20EE107C00025CE5 /* Constants.swift in Sources */,

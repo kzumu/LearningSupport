@@ -22,6 +22,8 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var thirdPreferDateLabel: UILabel!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var mailAddressField: UITextField!
+    @IBOutlet weak var teacherAssignedField: UITextField!
+    
     @IBOutlet weak var otherField: UITextField!
     
     var txtActiveField: UITextField!
@@ -42,12 +44,6 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     @IBAction func nextButtonTapped(_ sender: Any) {
         
@@ -59,11 +55,12 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             return
         }
         
-        Reservation.name = nameField.text!
-        Reservation.mail = mailAddressField.text!
-        Reservation.other = otherField.text!
+        Reservation.name = nameField.text ?? ""
+        Reservation.mail = mailAddressField.text ?? ""
+        Reservation.other = otherField.text ?? ""
         Reservation.grade = grade[pickerView.selectedRow(inComponent: 0)]
-        Reservation.schoolNumber = schoolNumberField.text!
+        Reservation.schoolNumber = schoolNumberField.text ?? ""
+        Reservation.assignedTeacher = teacherAssignedField.text ?? ""
         
         makeMail()
     }
@@ -73,6 +70,7 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         nameField.resignFirstResponder()
         mailAddressField.resignFirstResponder()
         otherField.resignFirstResponder()
+        teacherAssignedField.resignFirstResponder()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -119,7 +117,6 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         var userInfo = notification.userInfo!
         var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-        
         var contentInset:UIEdgeInsets = scrollViewer.contentInset
         contentInset.bottom = keyboardFrame.size.height
         self.scrollViewer.contentInset = contentInset
@@ -169,7 +166,7 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         mailViewController.setToRecipients(toRecipients) //Toアドレスの表示
         mailViewController.setCcRecipients(CcRecipients) //Ccアドレスの表示
         
-        let body = "<table border><tr><td>科目名</td><td>\(Reservation.subjectName)</td></tr><tr><td>第1希望日</td><td>\(Reservation.firstPreferDay)</td></tr><td>第2希望日</td><td>\(Reservation.secondPreferDay)</td></tr><td>第3希望日</td><td>\(Reservation.thirdPreferDay)</td></tr><tr><td>申請者名</td><td>\(Reservation.name)</td></tr><tr><td>学年</td><td>\(Reservation.grade)</td></tr><tr><td>学籍番号</td><td>\(Reservation.schoolNumber)</td></tr><tr><td>メールアドレス</td><td>\(Reservation.mail)</td></tr><tr><td>伝達事項</td><td>\(Reservation.other)</td></tr></table>"
+        let body = "<table border><tr><td>科目名</td><td>\(Reservation.subjectName)</td></tr><tr><td>授業担当教員</td><td>\(Reservation.assignedTeacher)</td></tr><tr><td>第1希望日</td><td>\(Reservation.firstPreferDay)</td></tr><td>第2希望日</td><td>\(Reservation.secondPreferDay)</td></tr><td>第3希望日</td><td>\(Reservation.thirdPreferDay)</td></tr><tr><td>申請者名</td><td>\(Reservation.name)</td></tr><tr><td>学年</td><td>\(Reservation.grade)</td></tr><tr><td>学籍番号</td><td>\(Reservation.schoolNumber)</td></tr><tr><td>メールアドレス</td><td>\(Reservation.mail)</td></tr><tr><td>相談内容</td><td>\(Reservation.other)</td></tr></table>"
         
         //<tr><td>1-1</td><td>1-2</td></tr>
         mailViewController.setMessageBody(body, isHTML: true)

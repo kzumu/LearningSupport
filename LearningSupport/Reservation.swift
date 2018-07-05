@@ -18,5 +18,6 @@ class Reservation {
     static var mail:           String = "default"
     static var grade:          String = "default"
     static var other:          String = "default"
+    static var assignedTeacher:String = "default"
 }
 

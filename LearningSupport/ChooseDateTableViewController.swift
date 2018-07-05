@@ -37,10 +37,16 @@ class ChooseDateTableViewController: UITableViewController, DateTimeToParentProt
         keyboardView.frame = frame
         
         firstPreferTextField.inputView = keyboardView
+        firstPreferTextField.inputAssistantItem.leadingBarButtonGroups = []
+        firstPreferTextField.inputAssistantItem.trailingBarButtonGroups = []
         firstPreferTextField.delegate = self
         secondPreferTextField.inputView = keyboardView
+        secondPreferTextField.inputAssistantItem.leadingBarButtonGroups = []
+        secondPreferTextField.inputAssistantItem.trailingBarButtonGroups = []
         secondPreferTextField.delegate = self
         thirdPreferTextField.inputView = keyboardView
+        thirdPreferTextField.inputAssistantItem.leadingBarButtonGroups = []
+        thirdPreferTextField.inputAssistantItem.trailingBarButtonGroups = []
         thirdPreferTextField.delegate = self
     }
     

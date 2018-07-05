@@ -156,8 +156,8 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
         
         let mailViewController = MFMailComposeViewController()
-        let toRecipients = [Email.to]
-        //        let toRecipients = [Email.stubTo]
+//        let toRecipients = [Email.to] // Email object defined at Constatns.swift
+                let toRecipients = [Email.stubTo]
         
         let CcRecipients:[String] = self.stringForCcToArray(str: Reservation.mail)
         

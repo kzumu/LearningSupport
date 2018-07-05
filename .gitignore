@@ -1,4 +1,8 @@
-
 /LearningSupport/Constants.swift
-/Pods
 xcuserdata/
+Pods/*
+
+# others
+*.swp
+!.gitkeep
+.DS_Store

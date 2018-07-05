@@ -84,17 +84,15 @@
 		20D31FE11DF542A100EDA955 /* LearningSupport */ = {
 			isa = PBXGroup;
 			children = (
+				AC9B9CDC20EE7A1000111F68 /* Repository */,
 				AC9B9CDB20EE78E400111F68 /* Views */,
 				20D31FFB1DF58BF200EDA955 /* ViewControllers */,
 				20D31FF61DF55E2400EDA955 /* resource */,
 				20D31FE21DF542A100EDA955 /* AppDelegate.swift */,
+				20D31FEB1DF542A100EDA955 /* LaunchScreen.storyboard */,
 				20D31FE61DF542A100EDA955 /* Main.storyboard */,
 				20D31FE91DF542A100EDA955 /* Assets.xcassets */,
-				20D31FEB1DF542A100EDA955 /* LaunchScreen.storyboard */,
 				20D31FEE1DF542A100EDA955 /* Info.plist */,
-				20D31FF41DF55A1500EDA955 /* Reservation.swift */,
-				20D31FF91DF55FB700EDA955 /* ResourceManager.swift */,
-				20D320021DF593DE00EDA955 /* Subject.swift */,
 			);
 			path = LearningSupport;
 			sourceTree = "<group>";
@@ -114,7 +112,6 @@
 				20D31FFC1DF58C2000EDA955 /* ChooseSubjectViewController.swift */,
 				AC9B9CD120EE3F0600111F68 /* ChooseDateTableViewController.swift */,
 				20D320001DF58C7D00EDA955 /* InputInfoViewController.swift */,
-				ACA876AD20EE107C00025CE5 /* Constants.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -144,6 +141,17 @@
 				AC9B9CD320EE3FF200111F68 /* MyDateTimePickerView.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		AC9B9CDC20EE7A1000111F68 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				ACA876AD20EE107C00025CE5 /* Constants.swift */,
+				20D320021DF593DE00EDA955 /* Subject.swift */,
+				20D31FF41DF55A1500EDA955 /* Reservation.swift */,
+				20D31FF91DF55FB700EDA955 /* ResourceManager.swift */,
+			);
+			name = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

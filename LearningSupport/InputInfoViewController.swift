@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, MFMailComposeViewControllerDelegate {
+class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, MFMailComposeViewControllerDelegate, UITextFieldDelegate {
     
     let grade = ["１年生","２年生","３年生","４年生"]
     
@@ -40,9 +40,14 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         secondPreferDateLabel.text = Reservation.secondPreferDay
         thirdPreferDateLabel.text = Reservation.thirdPreferDay
         
+        schoolNumberField.delegate = self
+        nameField.delegate = self
+        mailAddressField.delegate = self
+        teacherAssignedField.delegate = self
+        otherField.delegate = self
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
@@ -69,8 +74,8 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         schoolNumberField.resignFirstResponder()
         nameField.resignFirstResponder()
         mailAddressField.resignFirstResponder()
-        otherField.resignFirstResponder()
         teacherAssignedField.resignFirstResponder()
+        otherField.resignFirstResponder()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -172,5 +177,11 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         mailViewController.setMessageBody(body, isHTML: true)
         
         self.present(mailViewController, animated: true, completion: nil)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        textField.resignFirstResponder()
+        
+        return true
     }
 }

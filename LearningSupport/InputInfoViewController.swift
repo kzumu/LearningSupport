@@ -9,18 +9,21 @@
 import UIKit
 import MessageUI
 
-class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, MFMailComposeViewControllerDelegate {
+class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, MFMailComposeViewControllerDelegate, UITextFieldDelegate {
     
     let grade = ["１年生","２年生","３年生","４年生"]
     
     @IBOutlet weak var pickerView: UIPickerView!
     
-
     @IBOutlet weak var schoolNumberField: UITextField!
     @IBOutlet weak var subjectTitle: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var firstPreferDateLabel: UILabel!
+    @IBOutlet weak var secondPreferDateLabel: UILabel!
+    @IBOutlet weak var thirdPreferDateLabel: UILabel!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var mailAddressField: UITextField!
+    @IBOutlet weak var teacherAssignedField: UITextField!
+    
     @IBOutlet weak var otherField: UITextField!
     
     var txtActiveField: UITextField!
@@ -33,18 +36,19 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     override func viewDidLoad() {
         super.viewDidLoad()
         subjectTitle.text = Reservation.subjectName
-        dateLabel.text = Reservation.day + Reservation.hour
+        firstPreferDateLabel.text = Reservation.firstPreferDay
+        secondPreferDateLabel.text = Reservation.secondPreferDay
+        thirdPreferDateLabel.text = Reservation.thirdPreferDay
+        
+        schoolNumberField.delegate = self
+        nameField.delegate = self
+        mailAddressField.delegate = self
+        teacherAssignedField.delegate = self
+        otherField.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     @IBAction func nextButtonTapped(_ sender: Any) {
         
@@ -56,11 +60,12 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             return
         }
         
-        Reservation.name = nameField.text!
-        Reservation.mail = mailAddressField.text!
-        Reservation.other = otherField.text!
+        Reservation.name = nameField.text ?? ""
+        Reservation.mail = mailAddressField.text ?? ""
+        Reservation.other = otherField.text ?? ""
         Reservation.grade = grade[pickerView.selectedRow(inComponent: 0)]
-        Reservation.schoolNumber = schoolNumberField.text!
+        Reservation.schoolNumber = schoolNumberField.text ?? ""
+        Reservation.assignedTeacher = teacherAssignedField.text ?? ""
         
         makeMail()
     }
@@ -69,6 +74,7 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         schoolNumberField.resignFirstResponder()
         nameField.resignFirstResponder()
         mailAddressField.resignFirstResponder()
+        teacherAssignedField.resignFirstResponder()
         otherField.resignFirstResponder()
     }
     
@@ -93,8 +99,8 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         case .sent:
             self.dismiss(animated: true, completion: {
                 print("Email Sent Successfully")
-                let ac = UIAlertController(title: "\(Reservation.mail)に控えを送信します。",
-                                           message: "メールが正常に送信されないバグが発生しているようです。\nお手数をおかけしますがホームボタンをダブルタップして送信ボックスをチェックの上、未送信の場合は未送信リストを下にスワイプして再送信して見てください。",
+                let ac = UIAlertController(title: "\(Reservation.mail)に控えを送信しました。",
+                                           message: "正しく控えのメールが届いているかご確認ください。",
                                            preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
                     self.navigationController?.popToRootViewController(animated: true)
@@ -116,7 +122,6 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         var userInfo = notification.userInfo!
         var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-        
         var contentInset:UIEdgeInsets = scrollViewer.contentInset
         contentInset.bottom = keyboardFrame.size.height
         self.scrollViewer.contentInset = contentInset
@@ -147,7 +152,7 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         //メールを送信できるかチェック
         if MFMailComposeViewController.canSendMail()==false {
             
-            let alert = UIAlertController(title: "エラー", message: "原因不明のエラーです\n管理者にご連絡ください", preferredStyle: .alert)
+            let alert = UIAlertController(title: "エラー", message: "メールが送信できる状態にありません\n管理者にご連絡ください", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             
@@ -156,8 +161,8 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
         
         let mailViewController = MFMailComposeViewController()
-        let toRecipients = [Email.to]
-        //        let toRecipients = [Email.stubTo]
+//        let toRecipients = [Email.to] // Email object defined at Constatns.swift
+                let toRecipients = [Email.stubTo]
         
         let CcRecipients:[String] = self.stringForCcToArray(str: Reservation.mail)
         
@@ -166,24 +171,17 @@ class InputInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         mailViewController.setToRecipients(toRecipients) //Toアドレスの表示
         mailViewController.setCcRecipients(CcRecipients) //Ccアドレスの表示
         
-        let body = "<table border><tr><td>希望日</td><td>\(Reservation.day)\(Reservation.hour)</td></tr><tr><td>科目名</td><td>\(Reservation.subjectName)</td></tr><tr><td>申請者名</td><td>\(Reservation.name)</td></tr><tr><td>学年</td><td>\(Reservation.grade)</td></tr><tr><td>学籍番号</td><td>\(Reservation.schoolNumber)</td></tr><tr><td>メールアドレス</td><td>\(Reservation.mail)</td></tr><tr><td>伝達事項</td><td>\(Reservation.other)</td></tr></table>"
+        let body = "<table border><tr><td>科目名</td><td>\(Reservation.subjectName)</td></tr><tr><td>授業担当教員</td><td>\(Reservation.assignedTeacher)</td></tr><tr><td>第1希望日</td><td>\(Reservation.firstPreferDay)</td></tr><td>第2希望日</td><td>\(Reservation.secondPreferDay)</td></tr><td>第3希望日</td><td>\(Reservation.thirdPreferDay)</td></tr><tr><td>申請者名</td><td>\(Reservation.name)</td></tr><tr><td>学年</td><td>\(Reservation.grade)</td></tr><tr><td>学籍番号</td><td>\(Reservation.schoolNumber)</td></tr><tr><td>メールアドレス</td><td>\(Reservation.mail)</td></tr><tr><td>相談内容</td><td>\(Reservation.other)</td></tr></table>"
         
         //<tr><td>1-1</td><td>1-2</td></tr>
         mailViewController.setMessageBody(body, isHTML: true)
         
-        
-        
         self.present(mailViewController, animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        textField.resignFirstResponder()
+        
+        return true
     }
-    */
-
 }

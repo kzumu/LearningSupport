@@ -1,0 +1,6 @@
+import Foundation
+
+struct Email {
+    static let to = "mailto@sample.com"
+    static let stubTo = "testmail@sample.com"
+}

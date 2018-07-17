@@ -6,10 +6,15 @@ DEPENDENCIES:
   - AccordionMenuSwift
   - JAYSON
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AccordionMenuSwift
+    - JAYSON
+
 SPEC CHECKSUMS:
   AccordionMenuSwift: 3e9387944e2ed98966a51733551e0be774a65914
   JAYSON: 0573c14066ef1a624a0f210df225e1a90b295200
 
 PODFILE CHECKSUM: 2ee80f9dd9654970413eca43f79a4223ced79792
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

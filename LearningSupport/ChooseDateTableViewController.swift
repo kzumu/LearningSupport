@@ -50,7 +50,7 @@ class ChooseDateTableViewController: UITableViewController, DateTimeToParentProt
         thirdPreferTextField.delegate = self
     }
     
-    internal func onClickRightButton(sender: UIButton) {
+    @objc internal func onClickRightButton(sender: UIButton) {
         Reservation.firstPreferDay = firstPreferTextField.text ?? "選択なし"
         Reservation.secondPreferDay = secondPreferTextField.text ?? "選択なし"
         Reservation.thirdPreferDay = thirdPreferTextField.text ?? "選択なし"
